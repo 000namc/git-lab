@@ -18,11 +18,13 @@ case "${1:-}" in
     for d in "$SCEN"/*/; do
       n=$(basename "$d")
       desc=$(sed -n '1s/^# *//p' "$d/README.md" 2>/dev/null || true)
-      printf '  %-28s %s\n' "$n" "$desc"
+      [ -f "$d/setup.sh" ] || desc="(준비 중) $desc"
+      printf '  %-24s %s\n' "$n" "$desc"
     done ;;
   start|reset)
     name=${2:?이름 필요}
-    [ -f "$SCEN/$name/setup.sh" ] || { echo "없는 시나리오: $name" >&2; exit 1; }
+    [ -d "$SCEN/$name" ] || { echo "없는 시나리오: $name" >&2; exit 1; }
+    [ -f "$SCEN/$name/setup.sh" ] || { echo "아직 준비 중인 시나리오: $name (lab show $name)" >&2; exit 1; }
     rm -rf "$WORK/$name"
     mkdir -p "$WORK/$name"
     ( cd "$WORK/$name" && bash "$SCEN/$name/setup.sh" )

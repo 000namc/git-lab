@@ -22,10 +22,11 @@ lab.sh         호스트 진입점 (build / shell / clean)
 ./lab.sh build          # 이미지 빌드 (debian + git + git-filter-repo + tig) — 상세: build/build.org
 ./lab.sh                # 컨테이너 셸
 lab list                # 시나리오 목록
-lab start 01-rebase-vs-merge
-cd /work/01-rebase-vs-merge && git lg
+lab start 00-smoke
+cd /work/00-smoke && git lg
 ```
 
+시나리오 번호는 단계 번호와 같다(`00-smoke`만 환경 검증용). `setup.sh`가 아직 없는 시나리오는 `lab list`에 `(준비 중)`으로 뜬다.
 시나리오 스크립트는 커밋 날짜와 신원을 고정하므로 같은 시나리오는 항상 같은 해시를 만든다.
 망치면 `lab reset <이름>` 으로 처음부터 (reset 뒤엔 `cd`를 다시 할 것).
 
@@ -33,17 +34,17 @@ cd /work/01-rebase-vs-merge && git lg
 
 | # | 주제 | 시나리오 |
 |---|------|----------|
-| 0 | 실습 환경 구축 | 01(검증) |
-| 1 | git 첫걸음: init/clone/config, add/commit, log/show, .gitignore | 02 |
-| 2 | 세 공간: 작업트리·인덱스·HEAD, reset soft/mixed/hard | 03 |
-| 3 | 브랜치와 HEAD: 브랜치=포인터, detached HEAD | 04 |
-| 4 | 원격 기본: clone/fetch/pull/push, tracking branch | 05 |
-| 5 | merge 내부: fast-forward, 3-way, merge-base, 충돌 | 06 |
-| 6 | 객체 모델: blob/tree/commit, refs — cat-file 로 확인 | 07 |
-| 7 | rebase 기초와 `--onto` | 01, 08 |
-| 8 | interactive rebase: squash/fixup/reword/edit, autosquash | 09 |
-| 9 | reflog 와 복구 | 10 |
-| 10 | 히스토리 수술: cherry-pick, revert, bisect, filter-repo | 11 |
-| 11 | 협업 규칙: force-with-lease, 공유 브랜치 rebase 금지 | 12 |
-| 12 | 곁가지: worktree, rerere, stash, sparse-checkout | 13 |
-| 13 | 블로그 시리즈 집필 | — |
+| 0 | 실습 환경 구축 | `00-smoke` |
+| 1 | git 첫걸음: init/clone/config, add/commit, log/show, .gitignore | `01-first-steps` |
+| 2 | 세 공간: 작업트리·인덱스·HEAD, reset soft/mixed/hard | `02-three-areas` |
+| 3 | 브랜치와 HEAD: 브랜치=포인터, detached HEAD | `03-branches-and-head` |
+| 4 | 원격 기본: clone/fetch/pull/push, tracking branch | `04-remotes` |
+| 5 | merge 내부: fast-forward, 3-way, merge-base, 충돌 | `05-merge-internals` |
+| 6 | 객체 모델: blob/tree/commit, refs — cat-file 로 확인 | `06-object-model` |
+| 7 | rebase 기초와 `--onto` | `07-rebase` |
+| 8 | interactive rebase: squash/fixup/reword/edit, autosquash | `08-interactive-rebase` |
+| 9 | reflog 와 복구 | `09-reflog-recovery` |
+| 10 | 히스토리 수술: cherry-pick, revert, bisect, filter-repo | `10-history-surgery` |
+| 11 | 협업 규칙: force-with-lease, 공유 브랜치 rebase 금지 | `11-collaboration` |
+| 12 | 곁가지: worktree, rerere, stash, sparse-checkout | `12-odds-and-ends` |
+| 13 | 블로그 시리즈 집필 | `—` |

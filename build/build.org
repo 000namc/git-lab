@@ -28,8 +28,8 @@ cd <이 레포 루트>
 #+begin_src sh
 ./lab.sh                  # 컨테이너 셸
 lab list
-lab start 01-rebase-vs-merge
-cd /work/01-rebase-vs-merge
+lab start 00-smoke
+cd /work/00-smoke
 git merge-base main feature   # b525ae4... 가 나오면 해시 고정 OK
 git lg
 exit
