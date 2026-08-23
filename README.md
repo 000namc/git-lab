@@ -26,7 +26,7 @@ cd /work/00-smoke && git log --oneline --graph --all
 |---|------|----------|------|
 | 0 | 실습 환경 | `00-smoke` | [00-environment.md](docs/00-environment.md) |
 | 1 | git 첫걸음: init/clone/config, add/commit, log/show/diff, .gitignore | `01-first-steps` | [01-first-steps.md](docs/01-first-steps.md) |
-| 2 | 세 공간: 작업트리·인덱스·HEAD, reset soft/mixed/hard | `02-three-areas` | 준비 중 |
+| 2 | 세 공간: 작업트리·인덱스·HEAD, reset soft/mixed/hard | `02-three-areas` | [02-three-areas.md](docs/02-three-areas.md) |
 | 3 | 브랜치와 HEAD: 브랜치=포인터, switch, detached HEAD | `03-branches-and-head` | 준비 중 |
 | 4 | 원격 기본: bare repo로 clone/fetch/pull/push, tracking branch | `04-remotes` | 준비 중 |
 | 5 | merge 내부: fast-forward, 3-way, merge-base, 충돌 | `05-merge-internals` | 준비 중 |
