@@ -1,0 +1,51 @@
+#+title: git-lab 실습 환경 빌드
+#+filetags: :git:docker:
+
+재현을 위한 명령 나열. 위에서 아래로 그대로 치면 같은 환경이 나온다.
+
+* 구성
+| 항목     | 값                                              |
+|----------+-------------------------------------------------|
+| base     | debian:bookworm-slim                            |
+| 패키지   | git git-filter-repo tig vim less tree bash-completion python3 |
+| git      | 2.39.5 (bookworm)                               |
+| 신원     | git-lab <lab@example.com> (system config 고정)  |
+| 시각     | scenarios/_lib.sh tick: 1700000000 부터 +60s    |
+| 마운트   | ../scenarios → /scenarios (ro). /work 는 컨테이너 내부 임시 공간 |
+
+* 선행 조건
+#+begin_src sh
+docker version            # Docker Desktop 실행 중이어야 함
+#+end_src
+
+* 빌드
+#+begin_src sh
+cd <이 레포 루트>
+./lab.sh build            # = docker compose -f build/docker-compose.yaml build
+#+end_src
+
+* 진입과 검증
+#+begin_src sh
+./lab.sh                  # 컨테이너 셸
+lab list
+lab start 01-rebase-vs-merge
+cd /work/01-rebase-vs-merge
+git merge-base main feature   # b525ae4... 가 나오면 해시 고정 OK
+git lg
+exit
+#+end_src
+
+* 이미지 직접 다루기 (compose 없이)
+#+begin_src sh
+docker build -f build/Dockerfile -t git-lab:local .
+docker run --rm -it -v "$PWD/scenarios:/scenarios:ro" git-lab:local
+#+end_src
+
+* 초기화
+#+begin_src sh
+./lab.sh clean            # 컨테이너·이미지 제거
+#+end_src
+
+* git 버전 올리기 (필요해지면)
+bookworm 은 2.39. 더 새 git 이 필요하면 Dockerfile 의 base 를 =debian:trixie-slim= 으로 바꾸고 재빌드한다.
+해시 고정은 git 버전과 무관하다(신원·시각·내용이 같으면 같은 해시).

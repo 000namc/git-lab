@@ -1,0 +1,6 @@
+# git-lab 컨테이너용 셸 설정
+source /usr/share/bash-completion/completions/git 2>/dev/null
+PS1='\[\e[1;32m\]git-lab\[\e[0m\]:\[\e[1;34m\]\w\[\e[0m\]$(__git_ps1 " (%s)" 2>/dev/null)\$ '
+alias ll='ls -la'
+alias lg='git lg'
+echo "git-lab: 'lab list' 로 시나리오 목록, 'lab start <이름>' 으로 실습 시작"

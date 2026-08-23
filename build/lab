@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+# 시나리오 런처: /scenarios/<이름>/setup.sh 를 실행해 /work/<이름> 에 실습 레포를 만든다.
+set -euo pipefail
+SCEN=/scenarios
+WORK=/work
+
+usage() {
+  cat <<USAGE
+lab list                 시나리오 목록
+lab start <이름>         실습 레포 생성 (이미 있으면 지우고 다시 만듦)
+lab reset <이름>         start 와 동일
+lab show  <이름>         시나리오 설명(README) 출력
+USAGE
+}
+
+case "${1:-}" in
+  list)
+    for d in "$SCEN"/*/; do
+      n=$(basename "$d")
+      desc=$(sed -n '1s/^# *//p' "$d/README.md" 2>/dev/null || true)
+      printf '  %-28s %s\n' "$n" "$desc"
+    done ;;
+  start|reset)
+    name=${2:?이름 필요}
+    [ -f "$SCEN/$name/setup.sh" ] || { echo "없는 시나리오: $name" >&2; exit 1; }
+    rm -rf "$WORK/$name"
+    mkdir -p "$WORK/$name"
+    ( cd "$WORK/$name" && bash "$SCEN/$name/setup.sh" )
+    echo
+    echo ">>> 준비 완료: cd $WORK/$name"
+    echo ">>> 과제는 'lab show $name' 으로 확인"
+    ;;
+  show)
+    name=${2:?이름 필요}
+    cat "$SCEN/$name/README.md" ;;
+  *) usage ;;
+esac

@@ -1,0 +1,14 @@
+services:
+  lab:
+    build:
+      context: ..
+      dockerfile: build/Dockerfile
+    image: git-lab:local
+    container_name: git-lab
+    hostname: git-lab
+    working_dir: /work
+    volumes:
+      - ../scenarios:/scenarios:ro   # 시나리오: 레포에서 편집, 컨테이너는 읽기만
+    # /work 는 컨테이너 내부 임시 공간. 시나리오가 결정적이라 나가면 버려도 된다.
+    stdin_open: true
+    tty: true
