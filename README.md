@@ -23,7 +23,7 @@ lab.sh         호스트 진입점 (build / shell / clean)
 ./lab.sh                # 컨테이너 셸
 lab list                # 시나리오 목록
 lab start 00-smoke
-cd /work/00-smoke && git lg
+cd /work/00-smoke && git log --oneline --graph --all
 ```
 
 시나리오 번호는 단계 번호와 같다(`00-smoke`만 환경 검증용). `setup.sh`가 아직 없는 시나리오는 `lab list`에 `(준비 중)`으로 뜬다.
