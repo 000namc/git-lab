@@ -34,15 +34,16 @@ cd /work/01-rebase-vs-merge && git lg
 | # | 주제 | 시나리오 |
 |---|------|----------|
 | 0 | 실습 환경 구축 | 01(검증) |
-| 1 | 세 공간: 작업트리·인덱스·HEAD, reset soft/mixed/hard | 02 |
-| 2 | 브랜치와 HEAD: 브랜치=포인터, detached HEAD | 03 |
-| 3 | 원격 기본: clone/fetch/pull/push, tracking branch | 04 |
-| 4 | merge 내부: fast-forward, 3-way, merge-base, 충돌 | 05 |
-| 5 | 객체 모델: blob/tree/commit, refs — cat-file 로 확인 | 06 |
-| 6 | rebase 기초와 `--onto` | 01, 07 |
-| 7 | interactive rebase: squash/fixup/reword/edit, autosquash | 08 |
-| 8 | reflog 와 복구 | 09 |
-| 9 | 히스토리 수술: cherry-pick, revert, bisect, filter-repo | 10 |
-| 10 | 협업 규칙: force-with-lease, 공유 브랜치 rebase 금지 | 11 |
-| 11 | 곁가지: worktree, rerere, stash, sparse-checkout | 12 |
-| 12 | 블로그 시리즈 집필 | — |
+| 1 | git 첫걸음: init/clone/config, add/commit, log/show, .gitignore | 02 |
+| 2 | 세 공간: 작업트리·인덱스·HEAD, reset soft/mixed/hard | 03 |
+| 3 | 브랜치와 HEAD: 브랜치=포인터, detached HEAD | 04 |
+| 4 | 원격 기본: clone/fetch/pull/push, tracking branch | 05 |
+| 5 | merge 내부: fast-forward, 3-way, merge-base, 충돌 | 06 |
+| 6 | 객체 모델: blob/tree/commit, refs — cat-file 로 확인 | 07 |
+| 7 | rebase 기초와 `--onto` | 01, 08 |
+| 8 | interactive rebase: squash/fixup/reword/edit, autosquash | 09 |
+| 9 | reflog 와 복구 | 10 |
+| 10 | 히스토리 수술: cherry-pick, revert, bisect, filter-repo | 11 |
+| 11 | 협업 규칙: force-with-lease, 공유 브랜치 rebase 금지 | 12 |
+| 12 | 곁가지: worktree, rerere, stash, sparse-checkout | 13 |
+| 13 | 블로그 시리즈 집필 | — |
