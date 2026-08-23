@@ -1,22 +1,22 @@
-# 환경 검증: rebase 와 merge 가 만드는 히스토리 비교 (7단계 rebase 에서 다시 씀)
+# 환경 검증: 같은 그래프·같은 해시가 나오는지 확인
 
 ## 상황
-`main` 에 커밋이 두 개 더 쌓인 사이, `feature` 브랜치에서 커밋 세 개를 만들었다.
-두 브랜치가 갈라져(diverged) 있다.
+`main`과 `feature`가 `b525ae4`에서 갈라진 작은 레포. 커밋 7개. 아무것도 바꾸지 않고 보기만 한다.
 
-```
-      A---B---C  main
-     /
-D---E---F---G---H  feature
-```
-(실제 모양은 `git lg` 로 확인)
+## 확인할 것
+1. `git lg` — 아래와 **해시까지 똑같이** 나와야 한다. 다르면 신원/시각 고정이 깨진 것(`build/build.org` 구성 표 참고).
+   ```
+   * 0919841 (main) chore: config
+   * 490030f docs: usage section
+   | * f2038f1 (HEAD -> feature) feat(feature): helper
+   | * 89a69f6 feat(feature): step 2
+   | * 71f7516 feat(feature): step 1
+   |/
+   * b525ae4 feat: app skeleton
+   * f38aaa1 init: README
+   ```
+2. `git merge-base main feature` → `b525ae4…`
+3. `git status` 가 clean, `git branch` 에 `main`·`feature` 둘.
+4. `lab reset 00-smoke` 후 `cd` 를 다시 하고 1을 반복 — 같은 결과.
 
-## 과제
-1. `git lg` 로 현재 그래프를 보고 merge-base 를 찾아라 (`git merge-base main feature`).
-2. `feature` 를 `main` 위로 `rebase` 하라. 그래프가 어떻게 바뀌는지, 커밋 해시가 왜 전부 바뀌는지 설명하라.
-3. `lab reset 00-smoke` 로 초기화한 뒤 이번엔 `main` 에서 `feature` 를 `merge` 하라. 두 결과를 비교하라.
-4. `git reflog` 에서 rebase 전의 `feature` 끝 커밋을 찾아 `feature-before` 브랜치로 되살려라.
-
-## 생각해볼 것
-- rebase 후 "같은 변경"인데 해시가 다른 커밋이 왜 둘 다 존재하는가? 옛 커밋은 언제 사라지는가?
-- 이미 push 한 브랜치를 rebase 하면 무슨 일이 생기는가?
+여기까지 맞으면 환경은 끝. 이 그래프를 읽는 법은 3단계, 두 줄기를 합치는 방법은 5단계·7단계에서 배운다.
