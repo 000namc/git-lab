@@ -54,3 +54,7 @@ lab.sh         호스트 진입점 (build / shell / clean)
 - `/scenarios`는 읽기 전용 마운트, `/work`는 컨테이너 내부 임시 공간이다. 나가면 사라지고 `lab start`로 재현된다.
 - `git lg`는 컨테이너 전용 alias(`log --oneline --graph --decorate --all`). 문서에는 항상 풀어 쓴 명령을 적는다.
 - 시나리오를 추가하려면 `scenarios/NN-이름/`에 `setup.sh`(`source /scenarios/_lib.sh` 뒤 `c`/`w`/`cm` 헬퍼로 커밋)와 `README.md`(첫 줄 `# 제목`이 `lab list`에 뜬다)를 둔다.
+
+## 라이선스
+
+MIT. 코드와 문서 모두 자유롭게 쓰고 고쳐도 된다.
