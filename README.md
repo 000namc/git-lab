@@ -1,4 +1,4 @@
-# git-study
+# git-lab
 
 git 을 중급 이상 수준으로 다시 공부하는 기록. 객체 모델에서 시작해 rebase/interactive rebase,
 reflog 복구, 히스토리 수술, 협업 규칙까지 다룬다. 공부 내용은 kata 이슈로 관리하고 `docs/kata/`에
